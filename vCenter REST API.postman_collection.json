@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "21278c6f-08ae-4846-a2dd-93b39a66a66d",
+		"name": "vCenter REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API Authentication",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "administrator@vsphere.local",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "DNAEvent2018!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/com/vmware/cis/session",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"com",
+						"vmware",
+						"cis",
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Virtual Machines",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "administrator@vsphere.local",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "DNAEvent2018!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/vcenter/vm",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"vcenter",
+						"vm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Customization Specs",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "administrator@vsphere.local",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "DNAEvent2018!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/vcenter/guest/customization-specs",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"vcenter",
+						"guest",
+						"customization-specs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all Local Librarys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/com/vmware/content/local-library",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"com",
+						"vmware",
+						"content",
+						"local-library"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get details of a local library",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/com/vmware/content/local-library/id:98fd6308-10ca-4093-9d0e-d81589af87de",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"com",
+						"vmware",
+						"content",
+						"local-library",
+						"id:98fd6308-10ca-4093-9d0e-d81589af87de"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Hosts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/vcenter/host",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"vcenter",
+						"host"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Datastores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/vcenter/datastore",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"vcenter",
+						"datastore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Folders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/vcenter/folder",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"vcenter",
+						"folder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all items in a specific library",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{vc}}/rest/com/vmware/content/library/item?library_id=e10291b8-bf61-44a0-a08a-d0f846a51e2d",
+					"protocol": "https",
+					"host": [
+						"{{vc}}"
+					],
+					"path": [
+						"rest",
+						"com",
+						"vmware",
+						"content",
+						"library",
+						"item"
+					],
+					"query": [
+						{
+							"key": "library_id",
+							"value": "e10291b8-bf61-44a0-a08a-d0f846a51e2d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deploy VM From Template",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"spec\": {\r\n    \"vm_home_storage\": {\r\n      \"datastore\": \"datastore-10\"\r\n    },\r\n    \"powered_on\": false,\r\n    \"name\": \"LIN-POD-02\",\r\n    \"guest_customization\": {\r\n      \"name\": \"Lubuntu 18.04\"\r\n    },\r\n    \"placement\": {\r\n      \"host\": \"host-9\",\r\n      \"folder\": \"group-h4\"\r\n    }\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "https://100.64.0.6/rest/vcenter/vm-template/library-items/838e0e80-0402-47c2-aa9f-0466d5f0f519?action=deploy",
+					"protocol": "https",
+					"host": [
+						"100",
+						"64",
+						"0",
+						"6"
+					],
+					"path": [
+						"rest",
+						"vcenter",
+						"vm-template",
+						"library-items",
+						"838e0e80-0402-47c2-aa9f-0466d5f0f519"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "deploy"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fad22421-d68a-49cf-a1c1-7922036b0b8b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b951c11e-1ed6-4a75-818b-44e840a28314",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "762788d3-9b3a-47f6-8f28-bb5a376755a2",
+			"key": "vc",
+			"value": "vcenter.compunetdemo.com",
+			"type": "string"
+		}
+	]
+}

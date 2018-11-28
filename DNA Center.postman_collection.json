@@ -1,0 +1,900 @@
+{
+	"info": {
+		"_postman_id": "d7b1000c-08e8-4d5b-9f6e-55a4dd3cb44c",
+		"name": "DNA Center",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Cookie Based Login",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "C1sco12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/system/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cookie Based Logoff",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "C1sco12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/system/v1/auth/logoff",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"v1",
+								"auth",
+								"logoff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token Based Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6f20911-1032-4653-9d2c-29eafafd8be2",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData.Token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "C1sco12345",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/javascript",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/system/v1/auth/token",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"v1",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sites",
+			"item": [
+				{
+					"name": "Site Health by Epoch Timestamp",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "__runsync",
+								"value": "true",
+								"type": "text"
+							},
+							{
+								"key": "__timeout",
+								"value": "30",
+								"type": "text"
+							},
+							{
+								"key": "persistbapioutput",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/dna/intent/api/v1/site-health?timestamp=1541769108000",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"site-health"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "1541769108000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Networks",
+			"item": [
+				{
+					"name": "All VLANS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/dna/intent/api/v1/topology/vlan/vlan-names",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"topology",
+								"vlan",
+								"vlan-names"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Site Topology",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/dna/intent/api/v1/topology/site-topology",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"topology",
+								"site-topology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Overall Network Health by Epoch Timestamp",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "__runsync",
+								"value": "true",
+								"type": "text"
+							},
+							{
+								"key": "__timeout",
+								"value": "30",
+								"type": "text"
+							},
+							{
+								"key": "persistbapioutput",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/dna/intent/api/v1/network-health?timestamp=1541769108000",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"network-health"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "1541769108000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "L3 Topology Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/dna/intent/api/v1/topology/l3/static",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"topology",
+								"l3",
+								"static"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Physical Topology",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/dna/intent/api/v1/topology/physical-topology",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"topology",
+								"physical-topology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "L2 Topology by VLAN",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/dna/intent/api/v1/topology/l2/10",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"topology",
+								"l2",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Devices",
+			"item": [
+				{
+					"name": "Network Devices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/network-device",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"network-device"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Config",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/network-device/{{deviceid}}/config",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"network-device",
+								"{{deviceid}}",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Query by Parameter",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/network-device/{{deviceid}}/autocomplete?macAddress",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"network-device",
+								"{{deviceid}}",
+								"autocomplete"
+							],
+							"query": [
+								{
+									"key": "vrfName",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "managementIpAddress",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "hostname",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "macAddress",
+									"value": ""
+								},
+								{
+									"key": "family",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collectionStatus",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collectionInterval",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "softwareVersion",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "softwareType",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "reachbilityStatus",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "reachabilityFailureReason",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "errorCode",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "platformId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "series",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "serialNumber",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "upTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "roleSource",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "associateWlcIp",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Brief Device Information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/network-device/{{deviceid}}/brief",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"network-device",
+								"{{deviceid}}",
+								"brief"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Command Runner",
+			"item": [
+				{
+					"name": "0. CLI Accepted by Command Runner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/dna/intent/api/v1/network-device-poller/cli/legit-reads",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"network-device-poller",
+								"cli",
+								"legit-reads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0. Network Devices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/network-device",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"network-device"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1. Submit Requests",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"commands\": [\n    \"show run\"\n  ],\n  \"description\": \"string\",\n  \"deviceUuids\": [\n    \"c6fd873c-61ec-42a2-a1cb-b6efa93a9a72\"\n  ],\n  \"name\": \"string\",\n  \"timeout\": 0\n}"
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/network-device-poller/cli/read-request",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"network-device-poller",
+								"cli",
+								"read-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Request by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/task/d647701c-8762-424e-a151-e24fa185239d",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task",
+								"d647701c-8762-424e-a151-e24fa185239d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. File by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/file/287baee1-f220-4463-8920-8267a351ab06",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"file",
+								"287baee1-f220-4463-8920-8267a351ab06"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "42cf9ddc-6d59-47fc-b477-0c05b9710c87",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "35a4540c-2917-424f-a019-690d756994b9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8c995717-cee6-4d9b-a43b-0575a6340d25",
+			"key": "dnac",
+			"value": "dna.compunetdemo.com",
+			"type": "string"
+		},
+		{
+			"id": "27f22271-fc24-477c-8923-532d341ec05c",
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmFhNTIyZGY4YWEyMTAwOGI3N2IxNDMiLCJhdXRoU291cmNlIjoiaW50ZXJuYWwiLCJ0ZW5hbnROYW1lIjoiVE5UMCIsInJvbGVzIjpbIjViYWE1MjJkZjhhYTIxMDA4Yjc3YjE0MiJdLCJ0ZW5hbnRJZCI6IjViYWE1MjJjZjhhYTIxMDA4Yjc3YjE0MCIsImV4cCI6MTU0MTc5MjQ0NCwidXNlcm5hbWUiOiJhZG1pbiJ9.dF0aeEsN3d0WNY4XzUxrfBx31x8yPJYiZvSRZprnRYE",
+			"type": "string"
+		}
+	]
+}

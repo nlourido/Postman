@@ -13,3 +13,6 @@ The [vCenter REST API Collection](https://github.com/nlourido/Postman/blob/maste
 
 Future Plans:
 Create API requests utilzing Postman "Tests" to automate processes like cloning/creating VMs from templates.
+
+# Star Wars API (swapi.co)
+The [Star Wars API Collection](https://github.com/nlourido/Postman/blob/master/Starwars.co%20API.postman_collection.json) is a collection with all current (as of 01/22/19) endpoint URIs for the Star Wars API. 
